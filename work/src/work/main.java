@@ -4,26 +4,21 @@ import java.util.*;
 
 public class main {
 	public static void main(String[] args) {
-		String grade;
 		Scanner scan = new Scanner(System.in);
-		System.out.print("학점 입력 : ");
-		grade = scan.next();
 		
-		switch(grade) {
-		case "A":
-		case "B":
-			System.out.print("Excellent");
-			break;
-		case "C":
-		case "D":
-			System.out.print("Good");
-			break;
-		case "F":
-			System.out.print("Bye");
-			break;
-		default :
-			System.out.print("잘못된 입력");
-			break;
+		int intarray[] = new int[10];
+		int sum=0;
+		System.out.print("정수 10개 입력 : ");
+		for (int i=0; i < intarray.length;i++) {
+			intarray[i] = scan.nextInt();
 		}
+		
+		for(int i=0;i<intarray.length;i++) {
+			if(intarray[i]%3==0) {
+				sum = sum + intarray[i];
+			}
+		}
+		System.out.printf("합계 : %d\n",sum);
 	}
 }
+		
