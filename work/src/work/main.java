@@ -4,16 +4,25 @@ import java.util.*;
 
 public class main{
 	public static void main(String[] argc) {
-		// 2차원배열 선언과 동시에 초기화
-        int[][] ar = { { 10, 20 }, { 30, 40 },{50,60} };
-        int i, j;
-        
-        // 행과 열을 출력하기위해 반복문 2
-        for (i = 0; i < ar.length; i++) 
-        {
-            for (j = 0; j < ar[i].length; j++)
-                System.out.print("  " + ar[i][j]);
-            System.out.println();
-        }
+		Name name = new Name("홍길동","임꺽정");
+		System.out.println(name.getMyName()+name.getYourName());
+	}
+}
+
+class Name{
+	String myName;
+	String yourName;
+	public Name(String myName,String yourName) {
+		setName(myName,yourName);
+	}
+	public String getMyName() {
+		return myName;
+	}
+	public String getYourName() {
+		return yourName;
+	}
+	public void setName(String myName,String yourName) {
+		this.myName=myName;
+		this.yourName=yourName;
 	}
 }
