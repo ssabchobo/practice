@@ -5,30 +5,42 @@ import java.util.*;
 public class main{
 	public static void main(String[] argc) {
 		Scanner in = new Scanner(System.in);
-		Rect []r=new Rect[4];
-		for(int i=0;i<4;i++) {
-			System.out.print(i+1);
-			System.out.print("너비와 높이 >> ");
-			int width = in.nextInt();
-			int heigth = in.nextInt();
-			r[i] = new Rect(width,heigth);
+		System.out.print("인원수>> ");
+		int p = in.nextInt();
+		Phone [] r = new Phone[p];
+		for(int i=0;i<p;i++) {
+			System.out.print("이름과 전화번호(번호는 연속적으로 입력)>> ");
+			r[i] = new Phone(in.next(),in.next());
 		}
-		System.out.print("저장하였습니다.");
-		int sum = 0;
-		for(int i=0;i<r.length;i++) {
-			sum += r[i].getArea();
+		System.out.println("저장되었습니다...");
+		
+		while (true) {
+			System.out.print("검색할 이름>> ");
+			String n = in.next();
+			if(n.equals("exit")) {
+				break;
+			} else {
+				for (int i = 0; i < p; i++) {
+					if (n.equals(r[i].getName())) {
+						System.out.println(n + "의 번호는" + r[i].getTel() + "입니다");
+					}
+				}
+			}
 		}
-		System.out.println("사각형의 전체의 합은 "+sum);
 	}
 }
 
-class Rect {
-	private int width, height;
-	public Rect(int width, int height) {
-		this.width = width;
-		this.height = height;
+class Phone{
+	private String name, tel;
+	
+	public Phone(String name, String tel) {
+		this.name = name;
+		this.tel = tel;
 	}
-	public int getArea() {
-		return width*height;
+	public String getName() {
+		return name;
+	}
+	public String getTel() {
+		return tel;
 	}
 }
