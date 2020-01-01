@@ -3,27 +3,32 @@ package work;
 import java.util.*;
 
 public class main{
-	private String name,tel;
-	public  main(String name, String tel) {
-		this.name = name;
-		this.tel = tel;
-	}
-	
-	public String getName() {
-		return name;
-	}
-	public String gettel() {
-		return tel;
-	}
 	public static void main(String[] argc) {
 		Scanner in = new Scanner(System.in);
-		
-		System.out.print("이름과 전화번호 입력>> ");
-		main a1 = new main(in.next(),in.next());
-		System.out.print("이름과 전화번호 입력>> ");
-		main a2 = new main(in.next(),in.next());
-		
-		System.out.println(a1.name + "의 번호"+a1.tel);
-		System.out.println(a2.name + "의 번호"+a2.tel);
+		Rect []r=new Rect[4];
+		for(int i=0;i<4;i++) {
+			System.out.print(i+1);
+			System.out.print("너비와 높이 >> ");
+			int width = in.nextInt();
+			int heigth = in.nextInt();
+			r[i] = new Rect(width,heigth);
+		}
+		System.out.print("저장하였습니다.");
+		int sum = 0;
+		for(int i=0;i<r.length;i++) {
+			sum += r[i].getArea();
+		}
+		System.out.println("사각형의 전체의 합은 "+sum);
+	}
+}
+
+class Rect {
+	private int width, height;
+	public Rect(int width, int height) {
+		this.width = width;
+		this.height = height;
+	}
+	public int getArea() {
+		return width*height;
 	}
 }
