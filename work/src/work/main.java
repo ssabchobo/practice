@@ -3,21 +3,27 @@ package work;
 import java.util.*;
 
 public class main{
-	private String title;
-	
-	
-	public main(String title) {
-		this.title = title;
+	private String name,tel;
+	public  main(String name, String tel) {
+		this.name = name;
+		this.tel = tel;
 	}
 	
-	private String getTitle() {
-		return title;
+	public String getName() {
+		return name;
 	}
-	
+	public String gettel() {
+		return tel;
+	}
 	public static void main(String[] argc) {
-		main mySong = new main("Let it go");
-		main yourSong = new main("강남스타일");
-		System.out.println("내 노래는 " + mySong.getTitle());
-		System.out.println("너 노래는 "+ yourSong.getTitle());
+		Scanner in = new Scanner(System.in);
+		
+		System.out.print("이름과 전화번호 입력>> ");
+		main a1 = new main(in.next(),in.next());
+		System.out.print("이름과 전화번호 입력>> ");
+		main a2 = new main(in.next(),in.next());
+		
+		System.out.println(a1.name + "의 번호"+a1.tel);
+		System.out.println(a2.name + "의 번호"+a2.tel);
 	}
 }
