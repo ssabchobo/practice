@@ -3,18 +3,21 @@ package work;
 import java.util.*;
 
 public class main {
-	public static void main(String[] args) {
-		int result =0;
-		int i=0;
-		
-		while(result<100) {
-			i++;
-			if(i%2==0) {
-				result -= i;
-			}else {
-				result += i;
-			}
+	public static int sum(int a, int b, int c) {
+		return b+c;
+	}
+	
+	public static int sum(int a,int... arr) {
+		int sum =0;
+		for(int i : arr) {
+			sum += i;
 		}
-		System.out.println("i="+i+", result="+result);
+		return sum;
+	}
+
+	public static void main(String[] args) {
+		System.out.println(sum(1,2,3));
+		int arr[] = {2,3};
+		System.out.println(sum(1,arr));
 	}
 }
