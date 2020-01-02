@@ -5,27 +5,24 @@ import java.util.*;
 public class main {
 	public static void main(String[] args) {
 		Scanner in = new Scanner(System.in);
-		String result;
-		String a = "com";
-		String b = "java";
-		String c = "bye";
+		int a;
+		int []arr = new int[10];
 		
-		while(true) {
-			System.out.println("URL을 입력하세요 : ");
-			result = in.next();
-			
-			if(result.equals("bye")) {
-				break;
+		System.out.println("숫자를 10개 입력하시오.");
+		for(int i=0;i<10;i++) {
+			a = in.nextInt();
+			if(a>=0) {
+				arr[(a)/10]++;
 			}
-			
-			if(result.endsWith(a)) {
-				System.out.println(result+"은 '"+a+"' 으로 끝납니다.");
+		}
+		for(int i=0;i<10;i++) {
+			System.out.printf("%d~%d : ",(i*10),((i+1)*10)-1);
+			for(int j=0;j<arr[i];j++) {
+				
+				System.out.print("*");
 			}
-			else if(result.endsWith(b)) {
-				System.out.println(result+"은 '"+b+"' 으로 끝납니다.");
-			}else {
-				continue;
-			}
-		}	
+			System.out.print("\n");
+		}
+		
 	}
 }
