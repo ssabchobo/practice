@@ -1,38 +1,45 @@
 package work;
 
 import java.util.*;
-
-class Point {
+class Shape{
 	private int x,y;
-	void set(int x,int y) {
+	
+	public Shape(int x, int y) {
 		this.x=x;
 		this.y=y;
 	}
-	void showPoint() {
-		System.out.println("(" + x + "," + y + ")");
+	public void print() {
+		System.out.print("("+x+","+y+")");
+	}
+	
+}
+class Rectangle extends Shape {
+	private int width;
+	private int height;
+	
+	public Rectangle(int x, int y, int width, int height) {
+		super(x,y);
+		this.width=width;
+		this.height= height;
+	}
+
+	public double area() {
+		return width*height;
+	}
+	
+	public void draw() {
+		print();
+		System.out.println("위치에 가로: "+width+"세로: "+height);
 	}
 }
 
-class ColorPoint extends Point {
-	private String color;
-	void setColor(String color) {
-		this.color  = color;
-	}
-	void showColorPoint() {
-		System.out.print(color);
-		showPoint();
-	}
-}
-
-public class main{
+public class main {
 	public static void main(String[] args) {
-		Point p = new Point();
-		p.set(1, 2);
-		p.showPoint();
-		
-		ColorPoint cp = new ColorPoint();
-		cp.set(3, 4);
-		cp.setColor("red");
-		cp.showColorPoint();
+		Rectangle rect1 = new Rectangle(5,3,10,20);
+		Rectangle rect2 = new Rectangle(8,9,10,20);
+		rect1.draw();
+		System.out.println("도형의 면적은: "+rect1.area());
+		rect2.draw();
+		System.out.println("도형의 면적은: "+rect2.area());
 	}
 }
