@@ -1,45 +1,46 @@
 package work;
 
 import java.util.*;
-class Shape{
-	private int x,y;
-	
-	public Shape(int x, int y) {
-		this.x=x;
-		this.y=y;
-	}
-	public void print() {
-		System.out.print("("+x+","+y+")");
-	}
-	
-}
-class Rectangle extends Shape {
-	private int width;
-	private int height;
-	
-	public Rectangle(int x, int y, int width, int height) {
-		super(x,y);
-		this.width=width;
-		this.height= height;
-	}
 
-	public double area() {
-		return width*height;
+class Animal{
+	private String sound;
+	public void sound() {
+		this.sound = sound;
 	}
-	
-	public void draw() {
-		print();
-		System.out.println("À§Ä¡¿¡ °¡·Î: "+width+"¼¼·Î: "+height);
+}
+
+class Cat extends Animal{
+	public void sound() {
+		System.out.println("¾ß¿Ë");
+	}
+}
+class Cock extends Animal{
+	public void sound() {
+		System.out.println("²¿³¢¿À");
+	}
+}
+class Dog extends Animal{
+	public void sound() {
+		System.out.println("¸Û¸Û");
+	}
+}
+class Duck extends Animal{
+	public void sound() {
+		System.out.println("²Ð²Ð");
 	}
 }
 
 public class main {
 	public static void main(String[] args) {
-		Rectangle rect1 = new Rectangle(5,3,10,20);
-		Rectangle rect2 = new Rectangle(8,9,10,20);
-		rect1.draw();
-		System.out.println("µµÇüÀÇ ¸éÀûÀº: "+rect1.area());
-		rect2.draw();
-		System.out.println("µµÇüÀÇ ¸éÀûÀº: "+rect2.area());
+		Animal animals[] = new Animal[4];
+		
+		animals[0] = new Cat();
+		animals[1] = new Cock();
+		animals[2] = new Dog();
+		animals[3] = new Duck();
+		
+		for(Animal animal : animals) {
+			animal.sound();
+		}
 	}
 }
