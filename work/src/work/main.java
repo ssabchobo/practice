@@ -2,54 +2,73 @@ package work;
 
 import java.util.*;
 
-class Person{
-	String name;
-	int age;
-	
-	public Person(String name, int age) {
-		this.name = name;
-		this.age = age;
+class Point{
+	private int x,y;
+
+	public Point(int x, int y) {
+		this.x = x;
+		this.y = y;
+	}
+
+	public int getX() {
+		return x;
+	}
+
+	public void setX(int x) {
+		this.x = x;
+	}
+
+	public int getY() {
+		return y;
+	}
+
+	public void setY(int y) {
+		this.y = y;
+	}
+
+	@Override
+	public String toString() {
+		return "Point [x=" + x + ", y=" + y + "]";
 	}	
-	public void show(){
-		System.out.println("사람 [ 이름: "+ name+", 나이: "+age);
-	}
 }
 
-class Student extends Person{
-	int number;
+class MovablePoint extends Point{
+	private int xSpeed,ySpeed;
 
-	public Student(String name, int age, int number) {
-		super(name,age);
-		this.number = number;
+	public MovablePoint(int x, int y, int xSpeed, int ySpeed) {
+		super(x, y);
+		this.xSpeed = xSpeed;
+		this.ySpeed = ySpeed;
 	}
-	public void show(){
-		System.out.println("학생 [ 이름: "+ name+", 나이: "+age+", 학번: "+number);
-	}
-}
 
-class ForeignStudent extends Student{
-	String nation;
-
-	public ForeignStudent(String name, int age, int number, String nation) {
-		super(name, age, number);
-		this.nation = nation;
+	public int getxSpeed() {
+		return xSpeed;
 	}
-	public void show(){
-		System.out.println("외국학생 [ 이름: "+ name+", 나이: "+age+", 학번: "+number+", 국적: "+nation);
+
+	public void setxSpeed(int xSpeed) {
+		this.xSpeed = xSpeed;
+	}
+
+	public int getySpeed() {
+		return ySpeed;
+	}
+
+	public void setySpeed(int ySpeed) {
+		this.ySpeed = ySpeed;
+	}
+
+	@Override
+	public String toString() {
+		return "MovablePoint [xSpeed=" + xSpeed + ", ySpeed=" + ySpeed + "]";
 	}
 }
 
 public class main{
 	public static void main(String[] args){
-		Person p1 [] = new Person[3];
+		Point p1 = new Point(0,0);
+		MovablePoint p2 = new MovablePoint(0,0,0,0);
 		
-		p1[0] = new Person("길동이",22);
-		p1[1] = new Student("황진이",23,100);
-		p1[2] = new ForeignStudent("Amy",30,200,"U.S.A");
-		
-		for(Person p2 : p1) {
-			p2.show();
-		}
-		
+		System.out.println(p1);
+		System.out.println(p2);	
 	}
 }
