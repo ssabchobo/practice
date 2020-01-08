@@ -2,45 +2,54 @@ package work;
 
 import java.util.*;
 
-class Animal{
-	private String sound;
-	public void sound() {
-		this.sound = sound;
+class Person{
+	String name;
+	int age;
+	
+	public Person(String name, int age) {
+		this.name = name;
+		this.age = age;
+	}	
+	public void show(){
+		System.out.println("사람 [ 이름: "+ name+", 나이: "+age);
 	}
 }
 
-class Cat extends Animal{
-	public void sound() {
-		System.out.println("야옹");
+class Student extends Person{
+	int number;
+
+	public Student(String name, int age, int number) {
+		super(name,age);
+		this.number = number;
 	}
-}
-class Cock extends Animal{
-	public void sound() {
-		System.out.println("꼬끼오");
-	}
-}
-class Dog extends Animal{
-	public void sound() {
-		System.out.println("멍멍");
-	}
-}
-class Duck extends Animal{
-	public void sound() {
-		System.out.println("꽥꽥");
+	public void show(){
+		System.out.println("학생 [ 이름: "+ name+", 나이: "+age+", 학번: "+number);
 	}
 }
 
-public class main {
-	public static void main(String[] args) {
-		Animal animals[] = new Animal[4];
+class ForeignStudent extends Student{
+	String nation;
+
+	public ForeignStudent(String name, int age, int number, String nation) {
+		super(name, age, number);
+		this.nation = nation;
+	}
+	public void show(){
+		System.out.println("외국학생 [ 이름: "+ name+", 나이: "+age+", 학번: "+number+", 국적: "+nation);
+	}
+}
+
+public class main{
+	public static void main(String[] args){
+		Person p1 [] = new Person[3];
 		
-		animals[0] = new Cat();
-		animals[1] = new Cock();
-		animals[2] = new Dog();
-		animals[3] = new Duck();
+		p1[0] = new Person("길동이",22);
+		p1[1] = new Student("황진이",23,100);
+		p1[2] = new ForeignStudent("Amy",30,200,"U.S.A");
 		
-		for(Animal animal : animals) {
-			animal.sound();
+		for(Person p2 : p1) {
+			p2.show();
 		}
+		
 	}
 }
