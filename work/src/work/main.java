@@ -3,7 +3,7 @@ package work;
 import java.util.*;
 
 class Alpha{
-	public void foo(String a[]) {
+	public void foo(String a) {
 		System.out.println("Alpha: foo");
 	}
 	public void bar(String a) {
@@ -11,7 +11,7 @@ class Alpha{
 	}
 }
 public class main extends Alpha{
-	public void foo(String a) {
+	public void foo(String a[]) {
 		System.out.println("Beta: foo");
 	}
 	public void bar(String a) {
@@ -20,7 +20,7 @@ public class main extends Alpha{
 	public static void main(String args[]) {
 		Alpha a = new main();
 		main b = (main)a;
-		//a.foo("test");
+		a.foo("test");
 		b.foo("test");
 		a.bar("test");
 		b.bar("test");
