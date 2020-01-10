@@ -40,11 +40,11 @@ class Computer implements Controllable{
 
 public class main{
 	public static void main(String[] args) {
-		TV tv = new TV();
-		Computer computer = new Computer();
+		Controllable[] controllable = { new TV(), new Computer()};
 		
-		tv.turnOn();
-		tv.repair();
+		for(Controllable c : controllable) {
+			c.turnOn();
+		}
 		Controllable.reset();
 	}
 	
