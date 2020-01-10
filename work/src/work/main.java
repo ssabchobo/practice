@@ -2,24 +2,52 @@ package work;
 
 import java.util.*;
 
-public class main {
-	public static void main(String[] args) {
-		String s = "Empty vessels make the most sound";
-		System.out.println("입력: " + s);
-		StringTokenizer st = new StringTokenizer(s, " ");
-		String[] a = new String[st.countTokens()];
-		System.out.println("단어 개수: " + st.countTokens());
-		for (int i = 0; i < a.length; i++) {
-			a[i] = st.nextToken();
-		}
-		
-		System.out.print("정렬된 토큰: ");
-		Arrays.sort(a);
-		for (int i = 0; i < a.length; i++) {
-			System.out.print(a[i] + " ,");
-		}
-//    while (st.hasMoreTokens()) {
-//       System.out.print(st.nextToken() + ", ");
-//    }
+abstract class Shape{
+	double pi = 3.14;
+	
+	abstract void draw();
+	
+	public double findArea() {
+		return 0.0;
+	}
+}
+
+class Circle extends Shape{
+	int radius;
+
+	public Circle(int radius) {
+		this.radius = radius;
+	}
+	
+	public void draw() {
+		System.out.println("원을 그리다.");
+	}
+	public double findArea(){
+		return pi * radius * radius;
+	}
+}
+
+class Rectangle extends Shape{
+	int w,h;
+	
+	public Rectangle(int w, int h) {
+		this.w = w;
+		this.h = h;
+	}
+
+	public void draw() {
+		System.out.println("사각형을 그리다");
+	}
+	
+	public double findArea() {
+		return w*h;
+	}
+}
+
+public class main{
+	public static void main(String[] agrs) {
+		Circle c = new Circle(3);
+		c.draw();
+		System.out.printf("원의 넓이는 %.1f\n",c.findArea());
 	}
 }
