@@ -2,51 +2,24 @@ package work;
 
 import java.util.*;
 
-interface Controllable{
-	default void repair() {
-		System.out.println("Àåºñ¸¦ ¼ö¸®ÇÑ´Ù.");
-	}
-	static void reset() {
-		System.out.println("Àåºñ¸¦ ÃÊ±âÈ­ÇÑ´Ù.");
-	}
-	
-	void turnOn();
-	void turnOff();
+interface Animal{
+	void sound();
 }
 
-interface RemoteControllable extends Controllable{
-	void remoteOn();
-	
-	void remoteOff();
-}
-
-class TV implements Controllable{
-	public void turnOn() {
-		System.out.println("TV¸¦ ÄÒ´Ù");
+class Dog implements Animal{
+	public void sound(){
+		System.out.println("¸Û¸Û");
 	}
-	public void turnOff() {
-		System.out.println("TV¸¦ ²ö´Ù");
-	}
-}
-
-class Computer implements Controllable{
-	public void turnOn() {
-		System.out.println("Computer¸¦ ÄÒ´Ù");
-	}
-	public void turnOff() {
-		System.out.println("Computer¸¦ ²ö´Ù");
-	} 
 }
 
 public class main{
 	public static void main(String[] args) {
-		Controllable[] controllable = { new TV(), new Computer()};
+		Dog d = new Dog();
 		
-		for(Controllable c : controllable) {
-			c.turnOn();
-		}
-		Controllable.reset();
+		makeSound(d);
 	}
 	
+	static void makeSound(Animal a) {
+		a.sound();
+	}
 }
-
