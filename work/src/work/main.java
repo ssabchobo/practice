@@ -4,24 +4,22 @@ import java.util.*;
 
 public class main {
 	public static void main(String[] args) {
-		System.out.print("입력: ");
-		Scanner sc = new Scanner(System.in);
-		String s = sc.nextLine();
-
-		StringTokenizer st = new StringTokenizer(s, " .");
-		System.out.println("단어개수 : " + st.countTokens());
-
-		String[] arr = new String[st.countTokens()];// 배열 생성
-		int i = 0;
-		while (st.hasMoreTokens()) {
-			arr[i] = st.nextToken();
-			i++;
+		String s = "Empty vessels make the most sound";
+		System.out.println("입력: " + s);
+		StringTokenizer st = new StringTokenizer(s, " ");
+		String[] a = new String[st.countTokens()];
+		System.out.println("단어 개수: " + st.countTokens());
+		for (int i = 0; i < a.length; i++) {
+			a[i] = st.nextToken();
 		}
-		Arrays.sort(arr);
-
-		for (int j = 0; j < arr.length; j++) {
-			System.out.print(arr[j] + ",");
+		
+		System.out.print("정렬된 토큰: ");
+		Arrays.sort(a);
+		for (int i = 0; i < a.length; i++) {
+			System.out.print(a[i] + " ,");
 		}
-
+//    while (st.hasMoreTokens()) {
+//       System.out.print(st.nextToken() + ", ");
+//    }
 	}
 }
