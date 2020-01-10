@@ -2,27 +2,26 @@ package work;
 
 import java.util.*;
 
-class Alpha{
-	public void foo(String a) {
-		System.out.println("Alpha: foo");
-	}
-	public void bar(String a) {
-		System.out.println("Alpha: bar");
-	}
-}
-public class main extends Alpha{
-	public void foo(String a[]) {
-		System.out.println("Beta: foo");
-	}
-	public void bar(String a) {
-		System.out.println("Beta: foo");
-	}
-	public static void main(String args[]) {
-		Alpha a = new main();
-		main b = (main)a;
-		a.foo("test");
-		b.foo("test");
-		a.bar("test");
-		b.bar("test");
+public class main {
+	public static void main(String[] args) {
+		System.out.print("입력: ");
+		Scanner sc = new Scanner(System.in);
+		String s = sc.nextLine();
+
+		StringTokenizer st = new StringTokenizer(s, " .");
+		System.out.println("단어개수 : " + st.countTokens());
+
+		String[] arr = new String[st.countTokens()];// 배열 생성
+		int i = 0;
+		while (st.hasMoreTokens()) {
+			arr[i] = st.nextToken();
+			i++;
+		}
+		Arrays.sort(arr);
+
+		for (int j = 0; j < arr.length; j++) {
+			System.out.print(arr[j] + ",");
+		}
+
 	}
 }
