@@ -2,52 +2,40 @@ package work;
 
 import java.util.*;
 
-abstract class Shape{
-	double pi = 3.14;
-	
-	abstract void draw();
-	
-	public double findArea() {
-		return 0.0;
-	}
+interface Comparable{
+	int compareTo(Object other);
 }
 
-class Circle extends Shape{
-	int radius;
-
-	public Circle(int radius) {
+class Circle implements Comparable{
+	double radius;
+	
+	public Circle (double radius) {
 		this.radius = radius;
-	}
-	
-	public void draw() {
-		System.out.println("원을 그리다.");
-	}
-	public double findArea(){
-		return pi * radius * radius;
-	}
-}
-
-class Rectangle extends Shape{
-	int w,h;
-	
-	public Rectangle(int w, int h) {
-		this.w = w;
-		this.h = h;
+		System.out.println(this.radius);
 	}
 
-	public void draw() {
-		System.out.println("사각형을 그리다");
-	}
-	
-	public double findArea() {
-		return w*h;
+	public int compareTo(Object o) {
+		Circle c = (Circle)o;
+		System.out.println(this.radius);
+		if(this.radius > c.radius)
+			return 1;
+		else if(this.radius == c.radius)
+			return 0;
+		else
+			return -1;
 	}
 }
 
 public class main{
-	public static void main(String[] agrs) {
-		Circle c = new Circle(3);
-		c.draw();
-		System.out.printf("원의 넓이는 %.1f\n",c.findArea());
+	public static void main(String[] args) {
+		Circle c1 = new Circle(6.0);
+		Circle c2 = new Circle(5.0);
+		
+		if(c1.compareTo(c2)>0)
+			System.out.println("첫번째 원이 두번째 원보다 크다.");
+		else if(c1.compareTo(c2)==0)
+			System.out.println("두 원의 크기가 같다.");
+		else
+			System.out.println("첫번째 원이 두번째 원보다 작다.");
 	}
 }
