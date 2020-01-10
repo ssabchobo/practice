@@ -2,40 +2,51 @@ package work;
 
 import java.util.*;
 
-interface Comparable{
-	int compareTo(Object other);
+interface Controllable{
+	default void repair() {
+		System.out.println("장비를 수리한다.");
+	}
+	static void reset() {
+		System.out.println("장비를 초기화한다.");
+	}
+	
+	void turnOn();
+	void turnOff();
 }
 
-class Circle implements Comparable{
-	double radius;
+interface RemoteControllable extends Controllable{
+	void remoteOn();
 	
-	public Circle (double radius) {
-		this.radius = radius;
-		System.out.println(this.radius);
-	}
+	void remoteOff();
+}
 
-	public int compareTo(Object o) {
-		Circle c = (Circle)o;
-		System.out.println(this.radius);
-		if(this.radius > c.radius)
-			return 1;
-		else if(this.radius == c.radius)
-			return 0;
-		else
-			return -1;
+class TV implements Controllable{
+	public void turnOn() {
+		System.out.println("TV를 켠다");
 	}
+	public void turnOff() {
+		System.out.println("TV를 끈다");
+	}
+}
+
+class Computer implements Controllable{
+	public void turnOn() {
+		System.out.println("Computer를 켠다");
+	}
+	public void turnOff() {
+		System.out.println("Computer를 끈다");
+	} 
 }
 
 public class main{
 	public static void main(String[] args) {
-		Circle c1 = new Circle(6.0);
-		Circle c2 = new Circle(5.0);
+		TV tv = new TV();
+		Computer computer = new Computer();
 		
-		if(c1.compareTo(c2)>0)
-			System.out.println("첫번째 원이 두번째 원보다 크다.");
-		else if(c1.compareTo(c2)==0)
-			System.out.println("두 원의 크기가 같다.");
-		else
-			System.out.println("첫번째 원이 두번째 원보다 작다.");
+		tv.turnOn();
+		tv.repair();
+		Controllable.reset();
 	}
+	
 }
+
