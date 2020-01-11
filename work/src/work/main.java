@@ -2,32 +2,31 @@ package work;
 
 import java.util.*;
 
-interface Movable{
-	void move (int x);
+abstract class Abstract{
+	int i;
+	
+	public Abstract(int i) {
+		this.i = i;
+	}
+
+	abstract void show();
 }
 
-class Car implements Movable{
-	private int pos = 0;
+class Concrete extends Abstract{
+	int j;
 	
-	public void move(int x) {
-		pos += x;
+	public Concrete(int i,int j) {
+		super(i);
+		this.j = j;
 	}
-	
 	public void show() {
-		System.out.println(pos+"m 이동했습니다.");
+		System.out.println("i = "+i+" j = "+j);
 	}
 }
+
 public class main{
 	public static void main(String[] args) {
-		/*Car c = new Car();
-		
-		c.move(5);
-		c.show();*/
-		Movable m = new Car();
-		m.move(6);
-		Car c = (Car)m;
-		c.move(10);
+		Concrete c = new Concrete(100,50);
 		c.show();
-		
 	}
 }
