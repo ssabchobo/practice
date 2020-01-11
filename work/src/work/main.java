@@ -1,52 +1,28 @@
 package work;
 
-import java.util.*;
-
-interface Human{
-	void eat();
-	void print();
-	
-	static void echo() {
-		System.out.println("야호!!!");
-	}
-}
-
-class Worker implements Human{
-	public void print() {
-		System.out.println("인간입니다.");
-	}
-
-	public void eat() {
-		System.out.println("빵을 먹습니다.");
-	}
-}
-
-class Student implements Human{
-	int i;
-	
-	public Student(int i) {
-		this.i = i;
-	}
-	
-	public void print() {
-		System.out.println("학생입니다.");
-	}
-	
-	public void eat() {
-		System.out.println("도시락을 먹습니다.");
-	}
-}
+import java.util.Vector;
 
 public class main{
 	public static void main(String[] args) {
-		Human.echo();
+		Vector<Integer> v = new Vector<Integer>();
+		v.add(5);
+		v.add(4);
+		v.add(-1);
 		
-		Student s = new Student(20);
-		s.print();
-		s.eat();
+		v.add(2,100);
 		
-		Worker p = new Worker();
-		p.print();
-		p.eat();
+		System.out.println("백터 내의 요소 객체 수: " + v.size());
+		System.out.println("백터의 현재 용량: " + v.capacity());
+		
+		for(int i=0; i<v.size(); i++) {
+			int n=v.get(i);
+			System.out.println(n);
+		}
+		int sum=0;
+		for(int i=0; i<v.size();i++) {
+			int n = v.get(i);
+			sum +=n;
+		}
+		System.out.println(sum);
 	}
 }
