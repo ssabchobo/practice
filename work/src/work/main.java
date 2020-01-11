@@ -1,29 +1,35 @@
 package work;
 
-import java.util.Vector;
+import java.util.*;
 
-class Point{
-	private int x,y;
-	public Point(int x, int y) {
-		this.x = x;
-		this.y= y;
-	}
-	public String toString() {
-		return "("+x+","+y+")";
-	}
-}
-public class main{
-	public static void main(String[] args) {
-		Vector<Point> v = new Vector<Point>();
-		v.add(new Point(2,3));
-		v.add(new Point(4,5));
-		v.add(new Point(6,7));
-		
-		v.remove(1);
-		
-		for(int i=0; i<v.size(); i++) {
-			Point p=v.get(i);
-			System.out.println(p);
+public class main {
+	/*public static void printBig(Vector<Integer>v) {
+		int big = v.get(0);
+		for(int i = 0;i<v.size();i++) {
+			if(big<v.get(i)) {
+				big = v.get(i);
+			}
 		}
+		System.out.println(big);
+	}*/
+	public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+		
+		Vector<Integer> v = new Vector<Integer>();
+		System.out.println("정수 -1이 입력될때까지 >> ");
+		while(true) {
+			int n = in.nextInt();
+			if(n==-1) {
+				break;
+			}
+			v.add(n);
+		}
+		int big = v.get(0);
+		for(int i = 0;i<v.size();i++) {
+			if(big<v.get(i)) {
+				big = v.get(i);
+			}
+		}
+		System.out.println(big);
 	}
 }
