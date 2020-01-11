@@ -2,40 +2,51 @@ package work;
 
 import java.util.*;
 
-interface Printable {
-	void showPaper();
-}
-
-class A4 implements Printable {
-	public void showPaper() {
-		System.out.println("A4");
+interface Human{
+	void eat();
+	void print();
+	
+	static void echo() {
+		System.out.println("야호!!!");
 	}
 }
 
-class B5 implements Printable {
-	public void showPaper() {
-		System.out.println("B5");
+class Worker implements Human{
+	public void print() {
+		System.out.println("인간입니다.");
+	}
+
+	public void eat() {
+		System.out.println("빵을 먹습니다.");
 	}
 }
 
-class Call {
-	public void invoke(Printable pr) {
-		if(pr instanceof A4) {
-			((A4)pr).showPaper();
-		}else if(pr instanceof B5) {
-			((B5)pr).showPaper();
-		}
+class Student implements Human{
+	int i;
+	
+	public Student(int i) {
+		this.i = i;
+	}
+	
+	public void print() {
+		System.out.println("학생입니다.");
+	}
+	
+	public void eat() {
+		System.out.println("도시락을 먹습니다.");
 	}
 }
 
-public class main {
+public class main{
 	public static void main(String[] args) {
-		Printable[] printers = new Printable[2];
-		printers[0] = new A4();
-		printers[1] = new B5();
-		Call c = new Call();
-		for(Printable printer : printers) {
-			c.invoke(printer);
-		}
+		Human.echo();
+		
+		Student s = new Student(20);
+		s.print();
+		s.eat();
+		
+		Worker p = new Worker();
+		p.print();
+		p.eat();
 	}
 }
