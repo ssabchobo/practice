@@ -2,45 +2,40 @@ package work;
 
 import java.util.*;
 
-abstract class Controller{	
-	boolean power;
-	
-	public Controller(boolean power) {
-		this.power = power;
-	}
-	public void show() {
-		if(power) {
-		System.out.println(getName()+"가 켜졌습니다.");
-		}else if(!power) {
-			System.out.println(getName()+"가 꺼졌습니다.");
-		}
-	}
-	abstract String getName();
+interface Printable {
+	void showPaper();
 }
 
-class TV extends Controller{
-	
-	public TV(boolean power) {
-		super(power);
-	}
-	public String getName() {
-		return "TV";
+class A4 implements Printable {
+	public void showPaper() {
+		System.out.println("A4");
 	}
 }
-class Radio extends Controller{
-	public Radio(boolean power) {
-		super(power);
-	}
-	public String getName() {
-		return "Radio";
+
+class B5 implements Printable {
+	public void showPaper() {
+		System.out.println("B5");
 	}
 }
-public class main{
+
+class Call {
+	public void invoke(Printable pr) {
+		if(pr instanceof A4) {
+			((A4)pr).showPaper();
+		}else if(pr instanceof B5) {
+			((B5)pr).showPaper();
+		}
+	}
+}
+
+public class main {
 	public static void main(String[] args) {
-        Controller[] c = { new TV(false), new Radio(true) };
- 
-        for (Controller controller : c) {
-            controller.show();
-        }
-    }
+		Printable[] printers = new Printable[2];
+		printers[0] = new A4();
+		printers[1] = new B5();
+		Call c = new Call();
+		for(Printable printer : printers) {
+			c.invoke(printer);
+		}
+	}
 }
