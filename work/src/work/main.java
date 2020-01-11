@@ -2,27 +2,28 @@ package work;
 
 import java.util.Vector;
 
+class Point{
+	private int x,y;
+	public Point(int x, int y) {
+		this.x = x;
+		this.y= y;
+	}
+	public String toString() {
+		return "("+x+","+y+")";
+	}
+}
 public class main{
 	public static void main(String[] args) {
-		Vector<Integer> v = new Vector<Integer>();
-		v.add(5);
-		v.add(4);
-		v.add(-1);
+		Vector<Point> v = new Vector<Point>();
+		v.add(new Point(2,3));
+		v.add(new Point(4,5));
+		v.add(new Point(6,7));
 		
-		v.add(2,100);
-		
-		System.out.println("백터 내의 요소 객체 수: " + v.size());
-		System.out.println("백터의 현재 용량: " + v.capacity());
+		v.remove(1);
 		
 		for(int i=0; i<v.size(); i++) {
-			int n=v.get(i);
-			System.out.println(n);
+			Point p=v.get(i);
+			System.out.println(p);
 		}
-		int sum=0;
-		for(int i=0; i<v.size();i++) {
-			int n = v.get(i);
-			sum +=n;
-		}
-		System.out.println(sum);
 	}
 }
