@@ -2,29 +2,45 @@ package work;
 
 import java.util.*;
 
-interface Talkable{
-	void talk();
+abstract class Controller{	
+	boolean power;
+	
+	public Controller(boolean power) {
+		this.power = power;
+	}
+	public void show() {
+		if(power) {
+		System.out.println(getName()+"가 켜졌습니다.");
+		}else if(!power) {
+			System.out.println(getName()+"가 꺼졌습니다.");
+		}
+	}
+	abstract String getName();
 }
 
-class Korean implements Talkable{
-	public void talk() {
-		System.out.println("안녕하세요!");
+class TV extends Controller{
+	
+	public TV(boolean power) {
+		super(power);
+	}
+	public String getName() {
+		return "TV";
 	}
 }
-
-class American implements Talkable{
-	public void talk() {
-		System.out.println("Hello!");
+class Radio extends Controller{
+	public Radio(boolean power) {
+		super(power);
+	}
+	public String getName() {
+		return "Radio";
 	}
 }
-
 public class main{
-	static void speak(Talkable a) {
-		a.talk();
-	}
 	public static void main(String[] args) {
-		speak(new Korean());
-		speak(new American());
-	}
+        Controller[] c = { new TV(false), new Radio(true) };
+ 
+        for (Controller controller : c) {
+            controller.show();
+        }
+    }
 }
-
