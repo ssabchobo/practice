@@ -2,34 +2,20 @@ package work;
 
 import java.util.*;
 
-public class main {
-	/*public static void printBig(Vector<Integer>v) {
-		int big = v.get(0);
-		for(int i = 0;i<v.size();i++) {
-			if(big<v.get(i)) {
-				big = v.get(i);
-			}
-		}
-		System.out.println(big);
-	}*/
+public class main{
 	public static void main(String[] args) {
-		Scanner in = new Scanner(System.in);
+		String s = new String("hi");
+		System.out.println(s.hashCode());
+		s = s + "!";
+		System.out.println(s.hashCode());
 		
-		Vector<Integer> v = new Vector<Integer>();
-		System.out.println("정수 -1이 입력될때까지 >> ");
-		while(true) {
-			int n = in.nextInt();
-			if(n==-1) {
-				break;
-			}
-			v.add(n);
-		}
-		int big = v.get(0);
-		for(int i = 0;i<v.size();i++) {
-			if(big<v.get(i)) {
-				big = v.get(i);
-			}
-		}
-		System.out.println(big);
+		StringBuilder sb = new StringBuilder ("hi");
+		System.out.println(sb.hashCode());
+		sb = sb.append("!");
+		System.out.println(sb.hashCode());
+		
+		System.out.println(sb.replace(1,2,"Good bye"));
+		
 	}
+	
 }
