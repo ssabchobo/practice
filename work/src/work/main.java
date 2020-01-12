@@ -4,18 +4,14 @@ import java.util.*;
 
 public class main{
 	public static void main(String[] args) {
-		String s = new String("hi");
-		System.out.println(s.hashCode());
-		s = s + "!";
-		System.out.println(s.hashCode());
+		int[] src = new int[] {1,2,3,4,5,6};
+		int[] dst = new int[] {100,200,300,400,500,600,700};
 		
-		StringBuilder sb = new StringBuilder ("hi");
-		System.out.println(sb.hashCode());
-		sb = sb.append("!");
-		System.out.println(sb.hashCode());
-		
-		System.out.println(sb.replace(1,2,"Good bye"));
-		
+		System.arraycopy(src,1,dst,3,3);
+		for(int i = 0; i<dst.length;i++) {
+			System.out.print(dst[i]+" ");
+		}
+		System.out.println();
 	}
 	
 }
