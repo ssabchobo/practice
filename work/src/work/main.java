@@ -2,33 +2,66 @@ package work;
 
 import java.util.*;
 
-abstract class AbstractClass{
-	protected int i;
-		
-	public AbstractClass(int i) {
-		this.i = i;
+abstract class Converter{
+	protected double ratio;
+
+	public Converter(double ratio) {
+		this.ratio = ratio;
 	}
 	
-	abstract void show();
+	abstract protected double convert(double src);
+	abstract protected String getSrcString();
+	abstract protected String getDestString();
 	
+	public void run() {
+		Scanner scanner = new Scanner(System.in);
+		System.out.println(getSrcString()+"을"+getDestString()+"로 바꿉니다.");
+		System.out.println(getSrcString()+"을 입력하세요>> ");
+		double val = scanner.nextDouble();
+		double res = convert(val);
+		System.out.printf("변환결과: %.2f %s입니다.\n",res,getDestString());
+	}
 }
 
-class ConcreteClass extends AbstractClass{
-	private int j;
-		
-	public ConcreteClass(int i, int j) {
-		super(i);
-		this.j = j;
+class Won2Dollar extends Converter{
+	
+	public Won2Dollar(double ratio) {
+		super(ratio);
 	}
 
-	public void show() {
-		System.out.println("i="+i+" j="+j);
+	public double convert(double src) {
+		return ratio*src;
+	}
+	public String getSrcString() {
+		return "원";
+	}
+	public String getDestString() {
+		return "달러";
+	}
+}
+
+class Km2Mile extends Converter{
+	
+	public Km2Mile(double ratio) {
+		super(ratio);
+	}
+	public double convert(double src) {
+		return src/ratio;
+	}
+	public String getSrcString() {
+		return "Km";
+	}
+	public String getDestString() {
+		return "Mile";
 	}
 }
 
 public class main{
 	public static void main(String[] args) {
-		AbstractClass obj = new ConcreteClass(100,50);
-		obj.show();
+		Won2Dollar toDollar = new Won2Dollar(1200);
+		toDollar.run();
+		
+		Km2Mile toMile = new Km2Mile(1.609);
+		toMile.run();
 	}
 }
