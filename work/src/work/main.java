@@ -2,52 +2,33 @@ package work;
 
 import java.util.*;
 
-class Person{
-	String name;
-	int age;
-	public Person(String name, int age) {
-		this.name = name;
-		this.age = age;
+abstract class AbstractClass{
+	protected int i;
+		
+	public AbstractClass(int i) {
+		this.i = i;
 	}
-	public void show() {
-		System.out.println("사람 ( 이름 = "+ name+", 나이 = "+age);
-	}
+	
+	abstract void show();
+	
 }
 
-class Student extends Person{
-	int number;
-
-	public Student(String name, int age, int number) {
-		super(name, age);
-		this.number = number;
+class ConcreteClass extends AbstractClass{
+	private int j;
+		
+	public ConcreteClass(int i, int j) {
+		super(i);
+		this.j = j;
 	}
-	public void show() {
-		System.out.println("사람 ( 이름 = "+ name+", 나이 = "+age+", 학번 = "+number);
-	}
-}
 
-class ForeignStudent extends Student{
-	String nation;
-
-	public ForeignStudent(String name, int age, int number, String nation) {
-		super(name, age, number);
-		this.nation = nation;
-	}	
 	public void show() {
-		System.out.println("사람 ( 이름 = "+ name+", 나이 = "+age+", 학번 = "+number+", 국적 = "+nation);
+		System.out.println("i="+i+" j="+j);
 	}
 }
 
 public class main{
-	public static void main(String[] args){
-		Person[] p = new Person[3];
-		
-		p[0] = new Person("길동이",22);
-		p[1] = new Student("황진이",23,100);
-		p[2] = new ForeignStudent("amy",24,200,"U.S.A");
-		
-		for(Person p1:p) {
-			p1.show();
-		}
+	public static void main(String[] args) {
+		AbstractClass obj = new ConcreteClass(100,50);
+		obj.show();
 	}
 }
