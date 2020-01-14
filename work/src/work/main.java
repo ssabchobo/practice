@@ -2,37 +2,27 @@ package work;
 
 import java.util.*;
 
-interface Printable{
-	void showPaper();
-}
-
-class A4 implements Printable{
-	public void showPaper() {
-		System.out.println("A4");
-	}
-}
-
-class B5 implements Printable{
-	public void showPaper() {
-		System.out.println("B5");
-	}
-}
-
-class Call{
-	public void invoke(Printable p){
-		p.showPaper();
-		}
-}
-
 public class main{
 	public static void main(String[] args) {
-		Printable[] printers = new Printable[2];
-		printers[0] =  new A4();
-		printers[1] =  new B5();
+		Scanner in = new Scanner(System.in);
+		System.out.println("입력: ");
+		String s = in.nextLine();
+		StringTokenizer st = new StringTokenizer(s," ");
 		
-		Call c = new Call();
-		for(Printable printer: printers) {
-			c.invoke(printer);
+		System.out.println(st.countTokens());
+		
+		String[] arr = new String[st.countTokens()];
+		
+		int i=0;
+		while(st.hasMoreTokens()) {
+			arr[i]=st.nextToken();
+			i++;
+		}
+		Arrays.sort(arr);
+		System.out.print("정렬된 토큰: ");
+		for(int j=0;j<arr.length;j++) {
+			System.out.print(arr[j]+" ");
 		}
 	}
 }
+	
