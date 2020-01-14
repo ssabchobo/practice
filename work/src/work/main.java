@@ -4,25 +4,12 @@ import java.util.*;
 
 public class main{
 	public static void main(String[] args) {
-		Scanner in = new Scanner(System.in);
-		System.out.println("입력: ");
-		String s = in.nextLine();
-		StringTokenizer st = new StringTokenizer(s," ");
+		Calendar c = Calendar.getInstance();
 		
-		System.out.println(st.countTokens());
+		int hour = c.get(Calendar.HOUR_OF_DAY);
+		int min = c.get(Calendar.MINUTE);
+		System.out.println("현재 시간은 "+ hour +"시 "+min+"입니다.");
 		
-		String[] arr = new String[st.countTokens()];
-		
-		int i=0;
-		while(st.hasMoreTokens()) {
-			arr[i]=st.nextToken();
-			i++;
-		}
-		Arrays.sort(arr);
-		System.out.print("정렬된 토큰: ");
-		for(int j=0;j<arr.length;j++) {
-			System.out.print(arr[j]+" ");
-		}
 	}
 }
 	
